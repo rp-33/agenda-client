@@ -1,0 +1,33 @@
+<div class="container">
+<div class="jumbotron">
+  <h2>Contactos</h2>
+  <ol class="ctn-list">
+    <li ng-repeat="user in contacts">
+      <p ng-show="!user.active">
+        <span>{{user.displayName}}</span> 
+        <span>-</span>
+        <span>{{user.number}}</span>
+        <button class="btn btn-primary" ng-click="handleEditActive(user)">Editar</button>
+        <button class="btn btn-danger" ng-click="handleDelete(user,$index)">Eliminar</button>
+      </p>
+      <form role="form" ng-submit="handleEdit(user,$index)" ng-show="user.active">
+      <input ng-model="user.displayName" type="text" placeholder="Nombre y apellido" required class="form-control">
+      <input ng-model="user.number" type="number" placeholder="Numero telefonico" required class="form-control">
+      <button class="btn btn-danger" ng-click="handleEditActive(user)">Cancelar</button>
+      <input type="submit" value="Guardar" class="btn btn-primary">   
+      </form> 
+    </li>
+  </ol>
+</div>
+
+ <div class="jumbotron">
+  <h2>Agregar contactos</h2>
+  <form role="form" ng-submit="handleSave()">
+    <input ng-model="displayName" type="text" placeholder="Nombre y apellido" required class="form-control">
+    <input ng-model="number" type="number" placeholder="Numero telefonico" required class="form-control">
+    <input type="submit" value="Guardar" class="btn btn-primary">
+  </form>  
+
+  </div>
+
+</div>
